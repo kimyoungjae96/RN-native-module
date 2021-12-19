@@ -10,10 +10,13 @@ import type {Node} from 'react';
 import React from 'react';
 import {Button, SafeAreaView, StyleSheet} from 'react-native';
 import ToastModule from './Toast';
+import Alert from './Alert';
 
 const App: () => Node = () => {
   const onPress = () => {
-    ToastModule.show('Hello World', ToastModule.SHORT);
+    // ToastModule.show('Hello World', ToastModule.SHORT);
+    Alert.alert('Hello World');
+    console.log({string: Alert.STRING_VALUE, number: Alert.NUMBER_VALUE});
   };
 
   return (
