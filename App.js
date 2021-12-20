@@ -10,6 +10,7 @@ import type {Node} from 'react';
 import React, {useState} from 'react';
 import {Button, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {getBrightness, setBrightness} from './Brightness';
+import Counter from './Counter';
 
 const App: () => Node = () => {
   const [value, setValue] = useState(-1);
@@ -29,15 +30,23 @@ const App: () => Node = () => {
     setBrightness(1);
   };
 
+  const onPressLeftButton = () => {
+    setValue(value + 1);
+  };
+
+  const onPressRightButton = () => {
+    setValue(value - 1);
+  };
+
   return (
-    <SafeAreaView style={styles.block}>
-      <Button title="Update Brightness" onPress={onPress} />
-      <View style={styles.textWrapper}>
-        <Text style={styles.text}>{value}</Text>
-      </View>
-      <Button title="Low Brightness" onPress={onPressLow} />
-      <Button title="High Brightness" onPress={onPressHigh} />
-    </SafeAreaView>
+    <Counter
+      style={styles.block}
+      value={1}
+      leftButtonText="+1"
+      rightButtonText="-1"
+      onPressLeftButton={onPressLeftButton}
+      onPressRightButton={onPressRightButton}
+    />
   );
 };
 
